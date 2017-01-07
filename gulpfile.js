@@ -341,7 +341,7 @@ function startBrowserSync(isDev, specRunner) {
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',
-        logPrefix: 'slmaint',
+        logPrefix: 'angstarterapp',
         notify: true,
         reloadDelay: 1000 //1000
     };
