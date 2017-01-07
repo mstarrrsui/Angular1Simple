@@ -25,11 +25,6 @@
                 controllerAs: 'vm',
                 templateUrl: '/app/hops/hops.html'
             })
-            .when('/schools', {
-                controller: 'AllSchoolsController',
-                controllerAs: 'schools',
-                templateUrl: '/app/templates/allSchools.html'
-            })
             .when('/classrooms', {
                 controller: 'AllClassroomsController',
                 controllerAs: 'classrooms',
@@ -44,16 +39,6 @@
                         return dataService.getAllActivities();
                     }
                 }
-            })
-            .when('/classrooms/:id', {
-                templateUrl: '/app/templates/classroom.html',
-                controller: 'ClassroomController',
-                controllerAs: 'classroom'
-            })
-            .when('/classrooms/:id/detail/:month?', {
-                templateUrl: '/app/templates/classroomDetail.html',
-                controller: 'ClassroomController',
-                controllerAs: 'classroom'
             })
             .otherwise('/');
 
