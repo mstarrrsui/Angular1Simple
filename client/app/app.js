@@ -10,15 +10,20 @@
 
         $logProvider.debugEnabled(true);
 
-        $locationProvider.hashPrefix('!');
+        //$locationProvider.hashPrefix('!');
 
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
 
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
                 controllerAs: 'home',
                 templateUrl: '/app/templates/home.html'
+            })
+            .when('/hops', {
+                controller: 'HopsController',
+                controllerAs: 'vm',
+                templateUrl: '/app/hops/hops.html'
             })
             .when('/schools', {
                 controller: 'AllSchoolsController',

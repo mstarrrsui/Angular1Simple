@@ -1,0 +1,21 @@
+<h1 class="col-md-offset-1 col-lg-offset-1">Hops</h1>
+<div class="col-md-8 col-lg-8 col-md-offset-1 col-lg-offset-1">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">List of Hops</div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hop</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="hop in vm.allHops">
+                <td>{{ hop.name }}</td>
+                <td>{{ hop.description }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

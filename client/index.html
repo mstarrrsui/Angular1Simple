@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="libs/css/bootstrap-flatly.css">
     <link rel="stylesheet" href="libs/css/toastr.min.css">
+    <base href="/">
     <title>Angular 1 Starter</title>
 </head>
 <body ng-app="angstarterapp">
@@ -18,15 +19,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#!">Angular 1 Starter App</a>
+            <a class="navbar-brand" href="/">Angular 1 Starter App</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#!/schools">Option 1<span class="sr-only">(current)</span></a></li>
-                <li><a href="#!/classrooms">Option 2</a></li>
-                <li><a href="#!/activities">Option 3</a></li>
+                <li><a href="/hops">Hops<span class="sr-only">(current)</span></a></li>
+                <li><a href="/classrooms">Option 2</a></li>
+                <li><a href="/activities">Option 3</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -48,6 +49,7 @@
 <script src="app/services/dataService.js"></script>
 <script src="app/services/notifier.js"></script>
 <script src="app/filters/activityMonthFilter.js"></script>
+<script src="app/hops/hops.controller.js"></script>
 <script src="app/controllers/HomeController.js"></script>
 <script src="app/controllers/AllSchoolsController.js"></script>
 <script src="app/controllers/AllClassroomsController.js"></script>

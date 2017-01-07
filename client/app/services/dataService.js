@@ -5,75 +5,75 @@
 
     function dataService($http, $q, $log, $timeout) {
 
-        return {
-            getAllSchools: getAllSchools,
-            getAllClassrooms: getAllClassrooms,
-            getAllActivities: getAllActivities,
-            getClassroom: getClassroom,
-            getMonthName: getMonthName
+        var readyPromise;
+
+        var service = {
+            getHops: getHops,
+            getHop: getHop,
+            getRoles: getRoles,
+            ready: ready
         };
 
-        function getAllSchools() {
-            return $http.get('api/schools')
-                .then(function(response) {
-                    return response.data;
-                })
-                .catch(function(response) {
-                    $log.error('Error retrieving schools: ' + response.statusText);
-                    return $q.reject('Error retrieving schools.');
-                })
+        return service;
+
+        function getHops() {
+            return $http.get('/api/hops')
+                .then(getHopsComplete)
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for getHops')(message);
+                    $location.url('/');
+                });
+
+            function getHopsComplete(data, status, headers, config) {
+                return data.data;
+            }
         }
 
-        function getAllClassrooms() {
-            return $http.get('api/classrooms')
-                .then(function(response) {
-                    return response.data;
-                })
-                .catch(function(response) {
-                    $log.error('Error retrieving classrooms: ' + response.statusText);
-                    return $q.reject('Error retrieving classrooms.');
-                })
+        function getHop(id) {
+            return $http.get('/api/hop/' + id)
+                .then(getHopComplete)
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for getHops')(message);
+                    $location.url('/');
+                });
+
+            function getHopComplete(data, status, headers, config) {
+                return data.data;
+            }
         }
 
-        function getClassroom(id) {
-            return $http.get('api/classrooms/' + id)
-                .then(function(response) {
-                    return response.data;
-                })
-                .catch(function(response) {
-                    $log.error('Error retrieving classroom (' + id + '): ' + response.statusText);
-                    return $q.reject('Error retrieving classroom.');
-                })
+
+        function getRoles() {
+            return $http.get('http://localhost/winauthapi/api/roles/getroles', {withCredentials: true})
+                .then(getRolesComplete)
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for getRoles')(message);
+                    $location.url('/');
+                });
+
+            function getRolesComplete(data, status, headers, config) {
+                return data.data;
+            }
         }
 
-        function getAllActivities() {
-
-            var deferred = $q.defer();
-
-            $timeout(function() {
-
-                $http.get('api/activities')
-                    .then(function(response) {
-                        deferred.resolve(response.data);
-                    })
-                    .catch(function(response) {
-                        $log.error('Error retrieving activities: ' + response.statusText);
-                        return $q.reject('Error retrieving activities.');
-                    });
-
-            }, 1000);
-
-            return deferred.promise;
-
+        function getReady() {
+            if (!readyPromise) {
+                // Apps often pre-fetch session data ("prime the app")
+                // before showing the first view.
+                // This app doesn't need priming but we add a
+                // no-op implementation to show how it would work.
+                logger.info('Primed the app data');
+                readyPromise = $q.when(service);
+            }
+            return readyPromise;
         }
 
-        function getMonthName(month) {
-
-            var monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-
-            return monthNames[month - 1];
+        function ready(promisesArray) {
+            return getReady()
+                .then(function() {
+                    return promisesArray ? $q.all(promisesArray) : readyPromise;
+                })
+                .catch(exception.catcher('"ready" function failed'));
         }
 
     }
