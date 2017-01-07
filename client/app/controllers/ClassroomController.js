@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('app')
+    angular.module('angstarterapp')
         .controller('ClassroomController', [ClassroomController]);
 
     function ClassroomController() {

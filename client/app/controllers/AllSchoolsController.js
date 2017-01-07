@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('app')
+    angular.module('angstarterapp')
         .controller('AllSchoolsController', ['dataService', 'notifier', AllSchoolsController]);
 
     function AllSchoolsController(dataService, notifier) {

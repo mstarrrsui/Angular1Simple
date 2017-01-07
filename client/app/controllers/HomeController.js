@@ -1,13 +1,13 @@
 (function () {
 
-    angular.module('app')
+    angular.module('angstarterapp')
         .controller('HomeController', ['dataService', 'notifier', HomeController]);
 
     function HomeController(dataService, notifier) {
 
         var vm = this;
 
-        vm.message = 'Welcome to School Buddy!';
+        vm.message = 'Welcome to Angular Starter App 1!';
 
         dataService.getAllSchools()
             .then(function(schools) {
