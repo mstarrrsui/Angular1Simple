@@ -18,7 +18,7 @@
             .when('/', {
                 controller: 'HomeController',
                 controllerAs: 'home',
-                templateUrl: '/app/templates/home.html'
+                templateUrl: '/app/home/home.html'
             })
             .when('/hops', {
                 controller: 'HopsController',
