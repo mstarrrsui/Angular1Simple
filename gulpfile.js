@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var browserSync = require('browser-sync');
+var angularFilesort = require('gulp-angular-filesort');
 var historyApiFallback = require('connect-history-api-fallback');
 var config = require('./gulp.config')();
 var del = require('del');
@@ -55,19 +56,20 @@ gulp.task('inject', function () {
 
     log('Wire up the app and lib js and css into the html');
 
-	var cssFiles = [
-					config.theme
-				   ];
-
-
     return gulp
         .src(config.index)
+
         //.pipe($.inject(gulp.src('./libs/css/**/*.css')))
         //.pipe($.inject(gulp.src('./libs/js/**/*.js', {read: false}), {name: 'libs'}))
-        .pipe($.inject(gulp.src(cssFiles),{relative: true}))
-        //.pipe($.inject(gulp.src(config.js),{relative: true})) //inject app js
+
+
+        .pipe($.inject(gulp.src(config.theme),{relative: true}))
+        .pipe($.inject(gulp.src(config.appjs).pipe(angularFilesort()),{relative: true})) //inject app js
+
         //.pipe(replace({prefix:'__',suffix:'__',global:opts}))
         //.pipe(rename(config.client + 'index.html'))
+
+
         .pipe(gulp.dest(config.client));
 });
 
@@ -210,12 +212,12 @@ gulp.task('images', ['clean-images'], function() {
 
 
 gulp.task('serve-build', ['optimize'], function () {
-    bserve(false /* isDev */);
+    serve(false /* isDev */);
 });
 
 
 gulp.task('serve-dev', ['inject'], function () {
-    bserve(true /* isDev */);
+    serve(true /* isDev */);
 });
 
 gulp.task('serve-dev-express', ['inject'], function() {

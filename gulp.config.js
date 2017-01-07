@@ -30,7 +30,7 @@ module.exports = function () {
         htmltemplates: clientApp + '**/*.html',
         images: client + 'img/**/*.*',
         index: client + 'index.html',
-        js: [
+        appjs: [
             clientApp + '**/*.module.js',
             clientApp + '**/*.js',
             '!' + clientApp + '**/*.spec.js'
@@ -75,7 +75,7 @@ module.exports = function () {
          * Node settings
          */
         defaultPort: 7203,
-        nodeServer: './src/server/app.js'
+        nodeServer: './server/app.js'
 
     };
 

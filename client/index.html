@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 
     <!-- build:css styles/lib.css -->
-    <link rel="stylesheet" href="libs/css/toastr.min.css">
+    <link rel="stylesheet" href="libs/css/toastr.css">
     <!-- endbuild -->
 
     <!-- build:css styles/app.css -->
@@ -15,7 +15,7 @@
     <base href="/">
     <title>Angular 1 Starter</title>
 </head>
-<body ng-app="angstarterapp">
+<body ng-app="angstarterapp" ng-cloak>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -41,27 +41,32 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div ng-view></div>
+<div class="container content">
+    <ng-view></ng-view>
+</div>
 
+<!-- build:js js/lib.js-->
 <!-- Libraries -->
 <script src="libs/js/jquery-3.1.1.min.js"></script>
 <script src="libs/js/toastr.min.js"></script>
-
 <!-- Angular -->
 <script src="libs/js/angular.min.js"></script>
 <script src="libs/js/angular-route.min.js"></script>
 <script src="libs/js/angular-resource.min.js"></script>
+<!-- endbuild -->
 
-<!-- Application code -->
+<!-- build:js js/app.js-->
+<!-- inject:js -->
 <script src="app/app.js"></script>
-<script src="app/services/dataService.js"></script>
 <script src="app/services/notifier.js"></script>
-<script src="app/filters/activityMonthFilter.js"></script>
+<script src="app/services/dataService.js"></script>
 <script src="app/hops/hops.controller.js"></script>
+<script src="app/filters/activityMonthFilter.js"></script>
 <script src="app/controllers/HomeController.js"></script>
+<script src="app/controllers/ClassroomController.js"></script>
 <script src="app/controllers/AllClassroomsController.js"></script>
 <script src="app/controllers/AllActivitiesController.js"></script>
-<script src="app/controllers/ClassroomController.js"></script>
+<!-- endinject -->
 
 </body>
 </html>

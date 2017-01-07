@@ -8,6 +8,8 @@
     function HopsController(dataService, notifier) {
 
         var vm = this;
+        vm.allHops = [];
+        vm.message = 'Hops'
 
         dataService.getHops()
             .then(function(hops) {
