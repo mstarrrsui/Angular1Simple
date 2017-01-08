@@ -4,7 +4,7 @@
     angular.module('angstarterapp')
         .controller('HopsController', HopsController);
 
-    HopsController.$inject = [dataService, notifier];
+    HopsController.$inject = ['dataService', 'notifier'];
     function HopsController(dataService, notifier) {
 
         var vm = this;

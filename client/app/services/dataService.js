@@ -1,8 +1,10 @@
 (function () {
+    'use strict';
 
     angular.module('angstarterapp')
-        .factory('dataService', ['$http', '$q', '$log', '$timeout', dataService]);
+        .factory('dataService', dataService);
 
+    dataService.$inject = ['$http', '$q', '$log', '$timeout'];
     function dataService($http, $q, $log, $timeout) {
 
         var readyPromise;

@@ -216,7 +216,7 @@ gulp.task('serve-build', ['optimize'], function () {
 });
 
 
-gulp.task('serve-dev', ['inject'], function () {
+gulp.task('serve-dev',  function () {
     serve(true /* isDev */);
 });
 
