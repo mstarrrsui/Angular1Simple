@@ -1,0 +1,25 @@
+<h1 class="col-md-offset-1 col-lg-offset-1">{{vm.message}}</h1>
+<div class="col-md-11 col-lg-11 col-md-offset-1 col-lg-offset-1">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Fermentables</div>
+
+        <!-- Table -->
+        <table class="table table-condensed table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Fermentable</th>
+                    <th>Description</th>
+                    <th class="col-md-2">Country of Origin</th>
+                    <th class="col-md-2">Display Color</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="f in vm.allFermentables">
+                <td>{{ f.name }}</td>
+                <td>{{ f.description }}</td>
+                <td class="col-md-2">{{ f.countryOfOrigin }}</td>
+                <td class="col-md-2">{{ f.displayColor }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

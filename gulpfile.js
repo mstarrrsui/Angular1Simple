@@ -216,7 +216,7 @@ gulp.task('serve-build', ['optimize'], function () {
 });
 
 
-gulp.task('serve-dev',  function () {
+gulp.task('serve-dev', ['inject'], function () {
     serve(true /* isDev */);
 });
 
@@ -341,7 +341,7 @@ function startBrowserSync(isDev, specRunner) {
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',
-        logPrefix: 'angstarterapp',
+        logPrefix: 'ang',
         notify: true,
         reloadDelay: 1000 //1000
     };

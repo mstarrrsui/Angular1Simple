@@ -26,10 +26,10 @@
                 controllerAs: 'vm',
                 templateUrl: '/app/hops/hops.html'
             })
-            .when('/classrooms', {
-                controller: 'AllClassroomsController',
-                controllerAs: 'classrooms',
-                templateUrl: '/app/templates/allClassrooms.html'
+            .when('/fermentables', {
+                controller: 'FermentablesController',
+                controllerAs: 'vm',
+                templateUrl: '/app/fermentables/fermentables.html'
             })
             .when('/activities', {
                 controller: 'AllActivitiesController',
@@ -44,5 +44,20 @@
             .otherwise('/');
 
     };
+
+
+    app.run(AppRun);
+
+    AppRun.$inject = ['$rootScope','$log'];
+    function AppRun($rootScope, $log) {
+        $rootScope.$on('$routeChangeSuccess',function (event,current,previous) {
+
+            $log.debug('successfully changed routes');
+            $log.debug(event);
+            $log.debug(current);
+            $log.debug(previous);
+
+        });
+    }
 
 }());

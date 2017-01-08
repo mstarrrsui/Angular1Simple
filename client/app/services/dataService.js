@@ -12,6 +12,7 @@
         var service = {
             getHops: getHops,
             getHop: getHop,
+            getFermentables: getFermentables,
             getRoles: getRoles,
             ready: ready
         };
@@ -27,6 +28,19 @@
                 });
 
             function getHopsComplete(data, status, headers, config) {
+                return data.data;
+            }
+        }
+
+        function getFermentables() {
+            return $http.get('/api/fermentables')
+                .then(getFermentablesComplete)
+                .catch(function(message) {
+                    exception.catcher('XHR Failed for getFermentables')(message);
+                    $location.url('/');
+                });
+
+            function getFermentablesComplete(data, status, headers, config) {
                 return data.data;
             }
         }

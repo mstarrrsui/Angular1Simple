@@ -9,6 +9,8 @@ module.exports = function(app) {
     app.get(api + '/beerstyles', getBeerStyles);
     app.get(api + '/hop/:id', getHop);
     app.get(api + '/hops', getHops);
+    app.get(api + '/fermentables', getFermentables);
+    app.get(api + '/fermentable/:id', getFermentable);
 
     function getCustomer(req, res, next) {
         var json = jsonfileservice.getJsonFromFile(data + 'customers.json');
@@ -47,5 +49,26 @@ module.exports = function(app) {
             return c.id === parseInt(req.params.id);
         });
         res.send(style[0]);
+    }
+
+    function getFermentables(req, res, next) {
+        res.send(getData(data + 'fermentables.json'));
+    }
+
+    function getFermentable(req, res, next) {
+        res.send(getDataById(data + 'fermentables.json', req.params.id))
+    }
+
+    function getDataById(jsonfile,id) {
+        var json = jsonfileservice.getJsonFromFile(jsonfile);
+        var item = json.data.filter(function(c) {
+            return c.id === parseInt(id);
+        });
+        return item[0];
+    }
+
+    function getData(jsonfile) {
+        var json = jsonfileservice.getJsonFromFile(jsonfile);
+        return json.data;
     }
 };
