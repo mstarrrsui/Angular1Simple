@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles/bootstrap-flatly.css">
     <!-- endinject -->
 
-    <base href="/">
+
     <title>Angular 1 Starter</title>
 
 </head>
@@ -28,22 +28,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#!/">Angular 1 Starter App</a>
+            <a class="navbar-brand" ui-sref="home">Angular 1 Starter App</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#!/hops">Hops<span class="sr-only">(current)</span></a></li>
-                <li><a href="#!/fermentables">Fermentables</a></li>
-                <li><a href="#!/activities">Option 3</a></li>
+                <li><a ui-sref="hops">Hops<span class="sr-only">(current)</span></a></li>
+                <li><a ui-sref="fermentables">Fermentables</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
 <div class="container content">
-    <ng-view></ng-view>
+    <div ui-view></div>
 </div>
 
 <!-- build:js js/lib.js-->
@@ -52,8 +51,8 @@
 <script src="libs/js/toastr.min.js"></script>
 <!-- Angular -->
 <script src="libs/js/angular.min.js"></script>
-<script src="libs/js/angular-route.min.js"></script>
-<!--<script src="libs/js/angular-ui-router.js"></script>-->
+<!--<script src="libs/js/angular-route.min.js"></script>-->
+<script src="libs/js/angular-ui-router.js"></script>
 <script src="libs/js/angular-resource.min.js"></script>
 <!-- endbuild -->
 
@@ -62,8 +61,8 @@
 <script src="app/app.js"></script>
 <script src="app/services/notifier.js"></script>
 <script src="app/services/dataService.js"></script>
-<script src="app/hops/hops.controller.js"></script>
 <script src="app/home/home.controller.js"></script>
+<script src="app/hops/hops.controller.js"></script>
 <script src="app/filters/activityMonthFilter.js"></script>
 <script src="app/fermentables/fermentables.controller.js"></script>
 <script src="app/controllers/ClassroomController.js"></script>

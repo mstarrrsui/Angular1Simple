@@ -5,8 +5,8 @@
         .controller('HomeController', HomeController );
 
 
-    HomeController.$inject = ['dataService', 'notifier', '$route', '$log'];
-    function HomeController(dataService, notifier, $route, $log) {
+    HomeController.$inject = ['dataService', 'notifier', '$log'];
+    function HomeController(dataService, notifier, $log) {
 
         var vm = this;
         vm.allHops = [];
@@ -14,7 +14,7 @@
         vm.hopCount = 0;
         vm.fermentableCount = 0;
         vm.message = 'Welcome to Angular Starter App 1!';
-        vm.refresh = refresh;
+        //vm.refresh = refresh;
 
         activate();
 
@@ -23,11 +23,11 @@
             loadData();
         }
 
-        function refresh() {
-            $log.debug($route.current);
-            $log.debug($route.routes);
-            $route.reload();
-        }
+        // function refresh() {
+        //     $log.debug($route.current);
+        //     $log.debug($route.routes);
+        //     $route.reload();
+        // }
 
 
         function loadData() {

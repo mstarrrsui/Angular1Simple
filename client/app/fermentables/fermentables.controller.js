@@ -4,20 +4,19 @@
     angular.module('angstarterapp')
         .controller('FermentablesController', FermentablesController);
 
-    FermentablesController.$inject = ['dataService', 'notifier', 'fermentables'];
-    function FermentablesController(dataService, notifier, fermentables) {
+    FermentablesController.$inject = ['dataService', 'notifier'];
+    function FermentablesController(dataService, notifier) {
 
         var vm = this;
-        vm.allFermentables = fermentables;
+        vm.allFermentables = [];
         vm.message = 'Fermentables'
 
         activate();
 
         function activate() {
-            //return loadData().then(function() {
-                //setCurrPageData(1);
-                //logger.info('Activated Hops View');
-            //});
+            return loadData().then(function() {
+                //
+            });
         }
 
         function loadData() {
