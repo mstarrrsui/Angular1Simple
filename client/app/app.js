@@ -29,7 +29,12 @@
             .when('/fermentables', {
                 controller: 'FermentablesController',
                 controllerAs: 'vm',
-                templateUrl: '/app/fermentables/fermentables.html'
+                templateUrl: '/app/fermentables/fermentables.html',
+                resolve: {
+                    fermentables: function (dataService) {
+                        return dataService.getFermentables();
+                    }
+                }
             })
             .when('/activities', {
                 controller: 'AllActivitiesController',

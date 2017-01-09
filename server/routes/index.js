@@ -51,8 +51,16 @@ module.exports = function(app) {
         res.send(style[0]);
     }
 
+    function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
     function getFermentables(req, res, next) {
-        res.send(getData(data + 'fermentables.json'));
+        var json = getData(data + 'fermentables.json');
+        sleep(1000).then(() => {
+            // Do something after the sleep!
+            res.send(json)
+        });
     }
 
     function getFermentable(req, res, next) {
